@@ -1,0 +1,12 @@
+关于病毒库文件：
+1. 未包含在提交中
+2. 病毒库默认目录为clamav-db，当前大小为573M
+
+
+构建杀毒镜像：
+docker build -t amclean-arm:v102 .
+
+
+启动杀毒的命令示例（容器方式）：
+
+    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd)/clamav-db:/var/lib/clamav/ -v /:/host/:ro --env-file /opt/diss-metric/diss-metric-dist/amclean.env amclean-arm:v102 /usr/bin/amclean  f00e273e8f37547a3ea211531c1a3d581bcde170365cb87a5b67acd6dac53bb5
